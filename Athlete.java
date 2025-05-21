@@ -13,7 +13,7 @@ public class Athlete
         FEMALE,
         OTHER
     }
-    
+
     private String name;
     private Gender gender;
     private ArrayList <Activity> activityList;
@@ -27,5 +27,11 @@ public class Athlete
         // initialise instance variables
         this.name = iName;
         this.gender = iGender;
+    }
+    
+    // Override toString
+    @Override
+    public String toString() {
+        return "Name: " + this.name + " / Gender: " + this.gender;
     }
 }

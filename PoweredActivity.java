@@ -21,4 +21,9 @@ public class PoweredActivity extends Activity
         this.activityName = iName;
         this.equipment = iEquipment;
     }
+    
+    @Override
+    public String toString() {
+        return "Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance + " / Equipment: " + this.equipment;
+    }
 }

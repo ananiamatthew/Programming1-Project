@@ -35,4 +35,10 @@ public class Activity
         this.mode = iMode;
         this.activityName = iName;
     }
+    
+    // Override toString
+    @Override
+    public String toString() {
+        return "Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance;
+    }
 }
