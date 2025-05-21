@@ -20,9 +20,27 @@ public class Equipment
         this.resistance = iResistance;
     }
     
+    // Getters / Setters
+    public String getName()
+    {
+        return this.name;
+    }
+    public void setName(String input)
+    {
+        this.name = input;
+    }
+    public double getResistance()
+    {
+        return this.resistance;
+    }
+    public void setResistance(double input)
+    {
+        this.resistance = input;
+    }
+    
     // Override toString
     @Override
     public String toString() {
-        return "Name: " + this.name + " / Resistance: " + this.resistance;
+        return "EQUIPMENT - Name: " + this.name + " / Resistance: " + this.resistance;
     }
 }

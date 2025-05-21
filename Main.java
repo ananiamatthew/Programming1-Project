@@ -19,6 +19,7 @@ public class Main
     private Equipment iEquipment;
     private Athlete.Gender iGender;
     private Activity.Mode iMode;
+    private String athleteName;
 
     /**
      * Constructor for objects of class Main
@@ -48,9 +49,9 @@ public class Main
                 case 1:
                     // Create an equipment
                     System.out.println("Input equipment name:");
-                    iString = sc.nextLine();
+                    iString = sc.next();
                     sc.nextLine();
-                    System.out.println("Input equipment weight in lbs:");
+                    System.out.println("Input equipment resistance / weight in lbs:");
                     iDouble = sc.nextDouble();
                     equipmentList.add(new Equipment(iString, iDouble));
                     break;
@@ -79,12 +80,58 @@ public class Main
                     break;
                 case 4:
                     // Create an activity
+                    System.out.println("Input activity name:");
+                    iString = sc.next();
+                    sc.nextLine();
+                    System.out.println("Input which athlete will be doing this activity:");
+                    athleteName = sc.next();
+                    sc.nextLine();
+                    System.out.println("Input activity distance in kilometres:");
+                    iDouble = sc.nextDouble();
+                    sc.nextLine();
+                    System.out.println("Input activity mode (Walking, running, biking, swimming, skating):");
+                    String mode = sc.next();
+                    if ((mode.toUpperCase()).equals("WALKING")) {
+                        iMode = Activity.Mode.WALKING;
+                    } else if ((mode.toUpperCase()).equals("RUNNING")) {
+                        iMode = Activity.Mode.RUNNING;
+                    } else if ((mode.toUpperCase()).equals("BIKING")) {
+                        iMode = Activity.Mode.BIKING;
+                    } else if ((mode.toUpperCase()).equals("SWIMMING")) {
+                        iMode = Activity.Mode.SWIMMING;
+                    } else if ((mode.toUpperCase()).equals("SKATING")) {
+                        iMode = Activity.Mode.SKATING;
+                    }
+                    System.out.println("Input equipment name (or None if there is no equipment):");
+                    String equipment = sc.next();
+                    if ((equipment.toUpperCase()).equals("NONE")) {
+                        activityList.add(new Activity(iDouble, iMode, iString, athleteName));
+                    } else {
+                        for (int i = 0; i < equipmentList.size(); i++) {
+                            if (((equipmentList.get(i)).getName()).equals(equipment)) {
+                                iEquipment = equipmentList.get(i);
+                            }
+                        }
+                        activityList.add(new PoweredActivity(iDouble, iMode, iString, athleteName, iEquipment));
+                    }
                     break;
                 case 5:
                     // List all activities
+                    System.out.println("List of activities:");
+                    for (int i = 0; i < activityList.size(); i++) {
+                        System.out.println("- " + activityList.get(i));
+                    }
                     break;
                 case 6:
                     // List activities by athlete
+                    System.out.println("Input athlete name:");
+                    athleteName = sc.next();
+                    System.out.println("List of activities for " + athleteName + ":");
+                    for (int i = 0; i < activityList.size(); i++) {
+                            if (((activityList.get(i)).getAthleteName()).equals(athleteName)) {
+                                System.out.println("- " + activityList.get(i));
+                            }
+                    }
                     break;
                 case 7:
                     // List activities by mode

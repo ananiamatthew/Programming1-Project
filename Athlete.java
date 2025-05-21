@@ -29,9 +29,27 @@ public class Athlete
         this.gender = iGender;
     }
     
+    // Getters / Setters
+    public String getName()
+    {
+        return this.name;
+    }
+    public void setName(String input)
+    {
+        this.name = input;
+    }
+    public Gender getGender()
+    {
+        return this.gender;
+    }
+    public void setGender(Gender input)
+    {
+        this.gender = input;
+    }
+    
     // Override toString
     @Override
     public String toString() {
-        return "Name: " + this.name + " / Gender: " + this.gender;
+        return "ATHLETE - Name: " + this.name + " / Gender: " + this.gender;
     }
 }
