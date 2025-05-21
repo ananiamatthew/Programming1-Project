@@ -135,18 +135,59 @@ public class Main
                     break;
                 case 7:
                     // List activities by mode
+                    System.out.println("Input mode:");
+                    iMode = Activity.Mode.valueOf(sc.next().toUpperCase());
+                    System.out.println("List of activities for " + iMode + ":");
+                    for (int i = 0; i < activityList.size(); i++) {
+                            if (((activityList.get(i)).getMode()).equals(iMode)) {
+                                System.out.println("- " + activityList.get(i));
+                            }
+                    }
                     break;
                 case 8:
                     // Print activity details
+                    System.out.println("Input activity name:");
+                    String activityName = sc.next();
+                    System.out.println(activityName + ":");
+                    for (int i = 0; i < activityList.size(); i++) {
+                            if (((activityList.get(i)).getActivityName()).equals(activityName)) {
+                                System.out.println("PARTICIPATING ATHLETE: " + activityList.get(i).getAthleteName());
+                                System.out.println("DISTANCE: " + activityList.get(i).getDistance());
+                                System.out.println("MODE OF TRANSPORTATION: " + activityList.get(i).getMode());
+                                if (activityList.get(i).getType() == 2) {
+                                    System.out.println("EQUIPMENT: " + activityList.get(i).getEquipment());
+                                }
+                                System.out.println("CALORIES BURNED: " + activityList.get(i).getCaloriesBurned());
+                            }
+                    }
                     break;
                 case 9:
                     // Calculate total distance
+                    double totalDistance = 0;
+                    for (int i = 0; i < activityList.size(); i++) {
+                            totalDistance = totalDistance + activityList.get(i).getDistance();
+                    }
+                    System.out.println("Total distance from all activities: " + totalDistance);
                     break;
                 case 10:
                     // Calculate distance by athlete
+                    double athleteDistance = 0;
+                    for (int i = 0; i < activityList.size(); i++) {
+                            if (((activityList.get(i)).getAthleteName()).equals(athleteName)) {
+                                athleteDistance = athleteDistance + activityList.get(i).getDistance();
+                            }
+                    }
+                    System.out.println("Total distance for this athlete: " + athleteDistance);
                     break;
                 case 11:
                     // Calculate burned calories by athlete
+                    double athleteCalories = 0;
+                    for (int i = 0; i < activityList.size(); i++) {
+                            if (((activityList.get(i)).getAthleteName()).equals(athleteName)) {
+                                athleteCalories = athleteCalories + activityList.get(i).getCaloriesBurned();
+                            }
+                    }
+                    System.out.println("Total calories burned for this athlete: " + athleteCalories);
                     break;
                 case 12:
                     // Quit the loop

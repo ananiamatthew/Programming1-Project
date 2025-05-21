@@ -21,6 +21,19 @@ public class PoweredActivity extends Activity
         this.activityName = iName;
         this.athleteName = iAthleteName;
         this.equipment = iEquipment;
+        type = 2;
+    }
+    
+    /**
+     * Get the number of calories burned from this activity
+     *
+     * No parameters
+     * @return    Number of calories
+     */
+    public double getCaloriesBurned()
+    {
+        return (this.distance * 60 + (this.equipment.getResistance() * 10));
+        // This probably isn't accurate, but it's just to demonstrate how it works
     }
     
     // Getters / Setters
@@ -35,6 +48,6 @@ public class PoweredActivity extends Activity
     
     @Override
     public String toString() {
-        return "POWERED ACTIVITY - Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance + " / Equipment: " + this.equipment;
+        return "POWERED ACTIVITY - Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance + " / Athlete: " + this.athleteName + " / Equipment: " + this.equipment;
     }
 }

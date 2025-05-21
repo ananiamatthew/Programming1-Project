@@ -13,11 +13,12 @@ public class Activity
         SWIMMING,
         SKATING
     }
-    
+
     protected double distance;
     protected Mode mode;
     protected String activityName;
     protected String athleteName;
+    public int type;
 
     /**
      * Constructor for objects of class Activity
@@ -26,7 +27,7 @@ public class Activity
     public Activity()
     {
     }
-    
+
     /**
      * Constructor for objects of class Activity
      * Parameters are Name and Gender
@@ -38,7 +39,20 @@ public class Activity
         this.mode = iMode;
         this.activityName = iName;
         this.athleteName = iAthleteName;
+        type = 1;
     }
+
+    /**
+     * Get the number of calories burned from this activity
+     *
+     * No parameters
+     * @return    Number of calories
+     */
+    public double getCaloriesBurned()
+    {
+        return (this.distance * 60);
+    }
+
     
     // Getters / Setters
     public double getDistance()
@@ -73,10 +87,23 @@ public class Activity
     {
         this.athleteName = input;
     }
+    public int getType()
+    {
+        return this.type;
+    }
+    public void setType(int input)
+    {
+        this.type = input;
+    }
     
+    public Equipment getEquipment()
+    {
+        return null;
+    }
+
     // Override toString
     @Override
     public String toString() {
-        return "ACTIVITY - Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance;
+        return "ACTIVITY - Name: " + this.activityName + " / Mode: " + this.mode + " / Distance: " + this.distance + " / Athlete: " + this.athleteName;
     }
 }
